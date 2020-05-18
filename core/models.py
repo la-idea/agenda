@@ -19,3 +19,7 @@ class Evento(models.Model):
         return self.titulo
 # Traz o nome do título do evento como nome do objeto
 
+
+    def get_data_event(self):
+        return self.data_event.strftime('%d/%m/%Y')
+# Posso colocar uma função aqui no models e chamar no meu html através do objeto
