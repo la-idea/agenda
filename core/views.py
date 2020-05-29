@@ -17,8 +17,6 @@ def logout_user(request):
     logout(request)
     return redirect('/')
 
-
-
 def submit_login(request):
     if request.POST:
         username = request.POST.get('username')
@@ -33,8 +31,26 @@ def submit_login(request):
     return redirect('/')
 
 @login_required(login_url='/login/')
+def submit_evento(request):
+    if request.POST:
+        titulo = request.POST.get('titulo')
+        data_evento = request.POST.get('data_evento')
+        descricao = request.POST.get('descricao')
+        usuario = request.user
+        Evento.objects.create(titulo=titulo,
+                              data_event=data_evento,
+                              descricao=descricao,
+                              usuario=usuario)
+
+    return redirect('/')
+
+@login_required(login_url='/login/')
 def lista_eventos(request):
     usuario = request.user
     eventos = Evento.objects.filter(usuario=usuario)
     data = {'eventos' : eventos}
     return render(request, 'agenda.html', data)
+
+@login_required(login_url='/login/')
+def evento(request):
+    return render(request, 'evento.html')
