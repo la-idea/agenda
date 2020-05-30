@@ -21,8 +21,8 @@ class Evento(models.Model):
 
 
     def get_data_evento(self):
-        return self.data_event.strftime('%d/%m/%Y')
+        return self.data_evento.strftime('%d/%m/%Y')
 # Posso colocar uma função aqui no models e chamar no meu html através do objeto
 
-    def get_data_input_evento(self):
-        return self.data_event.strftime('%Y-%m-%dT%H:%M')
+   # def get_data_input_evento(self):
+    #    return self.data_event.strftime('%Y-%m-%dT%H:%M')
